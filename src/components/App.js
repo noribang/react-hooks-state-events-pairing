@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Video from "./Video";
 import Title from "./Title";
+import Comments from "./Comments";
+import CommentsButton from "./CommentsButton";
+import ButtonVote from "./ButtonVote";
 
 import video from "../data/video.js";
 
@@ -17,29 +20,8 @@ function App() {
         createdAt={videoData.createdAt} 
       />
       <br/>
-      <div>
-        <button style={{fontSize:18, color:'black'}}>{video.upvotes}<i class="fa fa-thumbs-up"></i></button>
-        <button style={{fontSize:18, color:'black'}}>{video.downvotes}<i class="fa fa-thumbs-down"></i></button>
-      </div>  
-
-      <div>
-        <button>Hide Comments</button>
-      </div>
-      <hr></hr>
-      <div>
-        <h2>{`${video.comments.length} `}Comments</h2>
-
-        {video.comments.map((comment, index) => {
-          return (
-            <div key={index}>
-              <h3>{comment.user}</h3>
-              <p>{comment.comment}</p>
-            </div>
-          )
-        })}
-
-      </div>
-    
+      <ButtonVote video={videoData} />
+      <CommentsButton video={videoData} />
     </div>
   );
 }
